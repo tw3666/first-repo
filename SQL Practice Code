@@ -1,0 +1,14 @@
+
+SELECT patients.patient_id, patients.first_name, patients.last_name, doctors.specialty from patients join admissions on
+patients.patient_id = admissions.patient_id join doctors on admissions.attending_doctor_id = doctors.doctor_id
+where admissions.diagnosis is "Epilepsy" and doctors.first_name is "Lisa";
+ 
+SELECT doctors.doctor_id, concat(doctors.first_name, " ", doctors.last_name) as doctor_name, doctors.specialty,
+year(admissions.admission_date) as selected_year, count(*) as total_admissions from admissions join
+doctors on admissions.attending_doctor_id = doctors.doctor_id
+group by doctor_name, selected_year
+order by doctor_id asc;
+
+SELECT (floor(weight/10)*10) as weight_group, count(weight) FROM patients
+group by weight_group
+order by weight desc;
