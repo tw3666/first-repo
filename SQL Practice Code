@@ -12,3 +12,22 @@ order by doctor_id asc;
 SELECT (floor(weight/10)*10) as weight_group, count(weight) FROM patients
 group by weight_group
 order by weight desc;
+
+------- To get the last 4 entries ------------
+
+SELECT * FROM movies
+order by year desc
+limit 4;
+
+---- List all the cities west of Chicago, ordered from west to east -----
+
+SELECT * FROM north_american_cities
+where longitude < -87.629798
+order by longitude asc;
+
+-------- List the two largest cities in Mexico (by population) -------
+
+SELECT city FROM north_american_cities
+where country is "Mexico"
+order by population desc
+limit 2;
