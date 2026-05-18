@@ -1,0 +1,39 @@
+?Arthritis
+head(Arthritis)
+
+install.packages("dplyr")
+library(dplyr)
+install.packages("ggpubr")
+library(ggpubr)
+
+# Change the "Improved" variable from a factor to a numeric:
+df <- Arthritis
+df$Improved <- as.numeric(df$Improved)
+head(df)
+
+# This is the better looking plot:
+bplot <- boxplot(Improved ~ Treatment, df)
+
+# To separate the plots by gender:
+ggboxplot(df, x = "Treatment", y = "Improved", fill = "Sex")
+
+?airquality
+head(airquality)
+
+airtib <- tibble(airquality)
+
+ggboxplot(airtib, x = "Month", y = "Ozone")
+
+ggboxplot(airtib, x = "Solar.R", y = "Ozone")
+
+ggplot(airtib, aes(x = Day, y = Ozone)) + geom_smooth(method = "lm")
+
+ggplot(airtib, aes(x = Month, y = Ozone)) + geom_smooth(method = "lm")
+
+plot(airtib)
+# We see here a negative correlation between Ozone and Wind, and a positive correlation between Ozone and Temp
+# We plot just those relations below:
+
+ggplot(airtib, aes(x = Wind, y = Ozone)) + geom_smooth(method = "lm")
+
+ggplot(airtib, aes(x = Temp, y = Ozone)) + geom_smooth(method = "lm")
