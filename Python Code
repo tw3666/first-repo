@@ -46,3 +46,14 @@ def hexToDec(hexNum):
         else:
             total = 1 * myKey[myList[0]]
             return total
+
+# Finding prime factors
+def allPrimesUpTo(num):
+    primesFound = []
+    for number in range(2, num + 1):
+        for prime in primesFound:
+            if number % prime == 0:
+                break
+        else:
+            primesFound.append(number)
+    print(primesFound)
