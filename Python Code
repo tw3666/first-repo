@@ -57,3 +57,14 @@ def allPrimesUpTo(num):
         else:
             primesFound.append(number)
     print(primesFound)
+
+# Creating a square function using a pre-defined triangle function
+def triangle(num):
+    if num == 1:
+        return num
+    return num + triangle(num - 1)
+
+def square(num):
+    if num == 1:
+        return triangle(num)
+    return triangle(num) + triangle(num-1)
